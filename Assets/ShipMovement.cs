@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class ShipMovement : TouchLogicV2 {
+public class ShipMovement : MonoBehaviour {
 
 	private Transform shipTrans;
 
@@ -20,8 +20,8 @@ public class ShipMovement : TouchLogicV2 {
 	}
 
 	// Do Graphic & Input updates here
-	public override void Update() {
-		base.Update();
+	void Update() {
+		//base.Update();
 		Vector3 pos = shipTrans.position;
 		pos.y = pos.y + 0.01f;
 		shipTrans.position = pos;
@@ -50,29 +50,5 @@ public class ShipMovement : TouchLogicV2 {
 		animator.SetTrigger("Death");
 		dead = true;
 		deathCooldown = 0.5f;
-	}
-
-	void UpdateShipPosition()
-	{
-		float zPos = shipTrans.position.z;
-		Vector3 fingerPos = new Vector3(Input.GetTouch(touch2Watch).position.x, Input.GetTouch(touch2Watch).position.y, zPos);
-		//z of ScreenToWorldPoint is distance from camera into the world, so we need to find this object's distance from the camera to make it stay on the same plane
-		Vector3 realWorldPos = Camera.main.ScreenToWorldPoint(fingerPos);
-		//Convert screen to world space
-		realWorldPos.z = zPos;
-		shipTrans.position = realWorldPos;
-	}
-
-	public override void OnTouchMovedAnywhere()
-	{
-		UpdateShipPosition();
-	}
-	public override void OnTouchStayedAnywhere()
-	{
-		UpdateShipPosition();
-	}
-	public override void OnTouchBeganAnywhere()
-	{
-		touch2Watch = TouchLogicV2.currTouch;
 	}
 }

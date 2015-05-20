@@ -39,7 +39,7 @@ public class Score : MonoBehaviour {
 	}
 
 	void Update () {
-		guiText.fontSize = 20;
-		guiText.text = "X: " + ship.transform.position.x + " Y: " + ship.transform.position.y;
+		GetComponent<GUIText>().fontSize = 20;
+		GetComponent<GUIText>().text = "X: " + ship.transform.position.x + " Y: " + ship.transform.position.y;
 	}
 }

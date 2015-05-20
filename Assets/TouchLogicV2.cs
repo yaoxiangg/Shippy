@@ -35,7 +35,7 @@ public class TouchLogicV2 : MonoBehaviour
 	public virtual void HandleTouch(Touch touch) {
 				currTouch = touch.fingerId;
 				//executes this code for current touch (i) on screen
-				if (this.guiTexture != null && (this.guiTexture.HitTest (touch.position))) {
+				if (this.GetComponent<GUITexture>() != null && (this.GetComponent<GUITexture>().HitTest (touch.position))) {
 						//if current touch hits our guitexture, run this code
 						if (touch.phase == TouchPhase.Began) {
 								OnTouchBegan ();
