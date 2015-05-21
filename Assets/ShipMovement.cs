@@ -4,8 +4,8 @@ using System.Collections;
 public class ShipMovement : MonoBehaviour {
 
 	private Transform shipTrans;
-	private double leftX = -0.732;
-	private double rightX = 0.732;
+	private double leftX = -1.632;
+	private double rightX = 1.632;
 
 	Animator animator;
 	public bool godMode = false;

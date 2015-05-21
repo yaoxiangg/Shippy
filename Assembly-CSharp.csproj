@@ -52,7 +52,8 @@
      <Compile Include="Assets\ScorePoint.cs" />
      <Compile Include="Assets\ShipMovement.cs" />
      <Compile Include="Assets\StartScreenScript.cs" />
-     <Compile Include="Assets\TouchLogicV2.cs" />
+     <Compile Include="Assets\btnClick.cs" />
+     <Compile Include="Assets\hitCount.cs" />
      <None Include="Assets\3DText Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
