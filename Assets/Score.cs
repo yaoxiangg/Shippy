@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Score : MonoBehaviour {
@@ -9,9 +9,6 @@ public class Score : MonoBehaviour {
 	static Score instance;
 
 	static public void AddPoint() {
-		if(instance.ship.dead)
-			return;
-
 		score++;
 
 		if(score > highScore) {
@@ -19,16 +16,15 @@ public class Score : MonoBehaviour {
 		}
 	}
 
-	ShipMovement ship;
+	GameObject ship;
 
 	void Start() {
-		instance = this;
-		GameObject player_go = GameObject.FindGameObjectWithTag("Player");
-		if(player_go == null) {
+		GameObject playerShip = GameObject.FindGameObjectWithTag("Player");
+		if(playerShip == null) {
 			Debug.LogError("Could not find an object with tag 'Player'.");
 		}
 
-		ship = player_go.GetComponent<ShipMovement>();
+		ship = playerShip;
 		score = 0;
 		highScore = PlayerPrefs.GetInt("highScore", 0);
 	}

@@ -4,6 +4,8 @@ using System.Collections;
 public class ShipMovement : MonoBehaviour {
 
 	private Transform shipTrans;
+	private double leftX = -0.73;
+	private double rightX = 0.73;
 
 	Animator animator;
 	public bool godMode = false;
@@ -24,7 +26,16 @@ public class ShipMovement : MonoBehaviour {
 		//base.Update();
 		Vector3 pos = shipTrans.position;
 		pos.y = pos.y + 0.01f;
+		if (pos.x < leftX) {
+			pos.x = (float)leftX;
+		}
+		if (pos.x > rightX) {
+			pos.x = (float)rightX;
+		}
 		shipTrans.position = pos;
+		
+		correctShipXAxisLimit();
+		
 		if(dead) {
 			deathCooldown -= Time.deltaTime;
 
@@ -35,8 +46,22 @@ public class ShipMovement : MonoBehaviour {
 			}
 		}
 	}
-
 	
+	void correctShipXAxisLimit() {
+		GameObject playerShip = GameObject.FindGameObjectWithTag("Player");
+		if(playerShip == null) {
+			Debug.LogError("Could not find an object with tag 'Player'.");
+		}
+		Vector3 shipPos = playerShip.transform.position;
+		if (playerShip.transform.position.x < leftX) {
+			shipPos.x = (float)leftX;
+			playerShip.transform.position = shipPos;
+		}
+		if (playerShip.transform.position.x > rightX) {
+			shipPos.x = (float)rightX;
+			playerShip.transform.position = shipPos;
+		}
+	}
 	// Do physics engine updates here
 	void FixedUpdate () {
 		if(dead)
