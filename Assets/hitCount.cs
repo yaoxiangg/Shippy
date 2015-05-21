@@ -4,7 +4,7 @@ using System.Collections;
 
 public class hitCount : MonoBehaviour {
 
-	static int hit = 0;
+	static long hit = 0;
 	Text txtBox;
 
 	static public void AddHit() {
