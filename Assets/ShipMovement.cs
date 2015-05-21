@@ -4,8 +4,8 @@ using System.Collections;
 public class ShipMovement : MonoBehaviour {
 
 	private Transform shipTrans;
-	private double leftX = -0.73;
-	private double rightX = 0.73;
+	private double leftX = -0.732;
+	private double rightX = 0.732;
 
 	Animator animator;
 	public bool godMode = false;
@@ -33,7 +33,7 @@ public class ShipMovement : MonoBehaviour {
 			pos.x = (float)rightX;
 		}
 		shipTrans.position = pos;
-		
+
 		correctShipXAxisLimit();
 		
 		if(dead) {

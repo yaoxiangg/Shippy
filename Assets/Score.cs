@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Score : MonoBehaviour {
@@ -7,6 +8,7 @@ public class Score : MonoBehaviour {
 	static int highScore = 0;
 
 	static Score instance;
+	Text txtBox;
 
 	static public void AddPoint() {
 		score++;
@@ -19,6 +21,7 @@ public class Score : MonoBehaviour {
 	GameObject ship;
 
 	void Start() {
+		txtBox = GetComponent<Text>();
 		GameObject playerShip = GameObject.FindGameObjectWithTag("Player");
 		if(playerShip == null) {
 			Debug.LogError("Could not find an object with tag 'Player'.");
@@ -35,7 +38,6 @@ public class Score : MonoBehaviour {
 	}
 
 	void Update () {
-		GetComponent<GUIText>().fontSize = 20;
-		GetComponent<GUIText>().text = "X: " + ship.transform.position.x + " Y: " + ship.transform.position.y;
+		txtBox.text = "X: " + ship.transform.position.x + "\nY: " + ship.transform.position.y;
 	}
 }
