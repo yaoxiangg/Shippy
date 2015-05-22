@@ -21,7 +21,7 @@ public class ShipMovement : MonoBehaviour {
 		bullet = GameObject.FindGameObjectWithTag("Bullet");
 		playerShip = GameObject.FindGameObjectWithTag("Player");
 		shipTrans = this.transform;
-		InvokeRepeating("spawnBullet", 2, 0.1f);
+		InvokeRepeating("spawnBullet", 1.5f, 0.1f);
 		if(animator == null) {
 			Debug.LogError("Didn't find animator!");
 		}
@@ -44,7 +44,7 @@ public class ShipMovement : MonoBehaviour {
 	}
 	
 	void updateShipLocation() {
-		Vector3 pos = shipTrans.position;
+		/*Vector3 pos = shipTrans.position;
 		pos.y = pos.y + 0.01f;
 		if (pos.x < leftX) {
 			pos.x = (float)leftX;
@@ -53,6 +53,7 @@ public class ShipMovement : MonoBehaviour {
 			pos.x = (float)rightX;
 		}
 		shipTrans.position = pos;
+		*/
 		if(playerShip == null) {
 			Debug.LogError("Could not find an object with tag 'Player'.");
 		}
