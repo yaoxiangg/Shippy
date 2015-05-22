@@ -7,6 +7,7 @@ public class BGMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		this.GetComponent<Renderer>().material.mainTextureOffset = new Vector2 (0f, Time.time * Speed);
+		if (Time.time > 1)
+		this.GetComponent<Renderer>().material.mainTextureOffset = new Vector2 (0f, (Time.time - 1 )* Speed);
 	}
 }
