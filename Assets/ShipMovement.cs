@@ -4,8 +4,11 @@ using System.Collections;
 public class ShipMovement : MonoBehaviour {
 
 	private Transform shipTrans;
+	private GameObject playerShip;
 	private double leftX = -1.632;
 	private double rightX = 1.632;
+	public GameObject bullet;
+	public float bulletSpeed = 100;
 
 	Animator animator;
 	public bool godMode = false;
@@ -15,7 +18,10 @@ public class ShipMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = transform.GetComponentInChildren<Animator>();
+		bullet = GameObject.FindGameObjectWithTag("Bullet");
+		playerShip = GameObject.FindGameObjectWithTag("Player");
 		shipTrans = this.transform;
+		InvokeRepeating("spawnBullet", 2, 0.1f);
 		if(animator == null) {
 			Debug.LogError("Didn't find animator!");
 		}
@@ -24,18 +30,8 @@ public class ShipMovement : MonoBehaviour {
 	// Do Graphic & Input updates here
 	void Update() {
 		//base.Update();
-		Vector3 pos = shipTrans.position;
-		pos.y = pos.y + 0.01f;
-		if (pos.x < leftX) {
-			pos.x = (float)leftX;
-		}
-		if (pos.x > rightX) {
-			pos.x = (float)rightX;
-		}
-		shipTrans.position = pos;
+		updateShipLocation();
 
-		correctShipXAxisLimit();
-		
 		if(dead) {
 			deathCooldown -= Time.deltaTime;
 
@@ -47,8 +43,16 @@ public class ShipMovement : MonoBehaviour {
 		}
 	}
 	
-	void correctShipXAxisLimit() {
-		GameObject playerShip = GameObject.FindGameObjectWithTag("Player");
+	void updateShipLocation() {
+		Vector3 pos = shipTrans.position;
+		pos.y = pos.y + 0.01f;
+		if (pos.x < leftX) {
+			pos.x = (float)leftX;
+		}
+		if (pos.x > rightX) {
+			pos.x = (float)rightX;
+		}
+		shipTrans.position = pos;
 		if(playerShip == null) {
 			Debug.LogError("Could not find an object with tag 'Player'.");
 		}
@@ -75,5 +79,12 @@ public class ShipMovement : MonoBehaviour {
 		animator.SetTrigger("Death");
 		dead = true;
 		deathCooldown = 0.5f;
+	}
+
+	void spawnBullet() {
+		Vector3 pos = playerShip.transform.position;
+		pos.y = pos.y + 0.3f;
+		GameObject bulletClone = (GameObject) Instantiate(bullet, pos, transform.rotation);
+		Destroy (bulletClone, 2.5f);
 	}
 }

@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BGLooper.cs" />
+     <Compile Include="Assets\BulletScript.cs" />
      <Compile Include="Assets\CameraMovement.cs" />
+     <Compile Include="Assets\PlanetMovement.cs" />
      <Compile Include="Assets\Score.cs" />
      <Compile Include="Assets\ScorePoint.cs" />
      <Compile Include="Assets\ShipMovement.cs" />
