@@ -9,7 +9,8 @@ public class StartScreenScript : MonoBehaviour {
 	private int drawDepth = -1000;		// the texture's order in the draw hierarchy: a low number means it renders on top
 	private float alpha = 1.0f;			// the texture's alpha value between 0 and 1
 	private int fadeDir = -1;			// the direction to fade: in = -1 or out = 1
-	
+	bool started = false;
+
 	void OnGUI()
 	{
 		fadeOutTexture = Texture2D.whiteTexture;
@@ -22,6 +23,20 @@ public class StartScreenScript : MonoBehaviour {
 		GUI.color = new Color (GUI.color.r, GUI.color.g, GUI.color.b, alpha);
 		GUI.depth = drawDepth;																// make the black texture render on top (drawn last)
 		GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);		// draw the texture to fit the entire screen area
+		if (!started) {
+			if (alpha > 0.01) {
+				Event.current.clickCount = 0;
+			} else {
+				Time.timeScale = 0;
+			}
+			if (Input.touchCount > 0 || Event.current.clickCount > 0) {
+				Time.timeScale = 1;
+				//HIDE TAP-TO-START SCREEN
+				GameObject tapScreen = GameObject.FindGameObjectWithTag("TapToStart");
+				Destroy (tapScreen);
+				started = true;
+			}
+		}
 	}
 	
 	// sets fadeDir to the direction parameter making the scene fade in if -1 and out if 1
