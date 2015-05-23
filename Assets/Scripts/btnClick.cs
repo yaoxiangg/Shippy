@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using TouchScript.Gestures;
 
 public class btnClick : MonoBehaviour {
 
@@ -12,16 +14,19 @@ public class btnClick : MonoBehaviour {
 	
 	}
 
-	void btn1_Click () {
-		hitCount.AddHit();
+	private void OnEnable()
+	{
+		// subscribe to gesture's Tapped event
+		GetComponent<TapGesture>().Tapped += tappedHandler;
 	}
-
-	void btn2_Click () {
-		hitCount.AddHit();
-
+	
+	private void OnDisable()
+	{
+		// don't forget to unsubscribe
+		GetComponent<TapGesture>().Tapped -= tappedHandler;
 	}
-
-	void btn3_Click () {
+	
+	private void tappedHandler(object sender, EventArgs e) {
 		hitCount.AddHit();
 	}
 }

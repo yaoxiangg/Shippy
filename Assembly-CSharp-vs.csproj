@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\StartScreenScript.cs" />
      <Compile Include="Assets\Scripts\btnClick.cs" />
      <Compile Include="Assets\Scripts\hitCount.cs" />
+     <Compile Include="Assets\TapBreaker.cs" />
      <None Include="Assets\Shaders\3DText Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
