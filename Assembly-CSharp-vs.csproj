@@ -57,12 +57,12 @@
      <Compile Include="Assets\Scripts\StartScreenScript.cs" />
      <Compile Include="Assets\Scripts\btnClick.cs" />
      <Compile Include="Assets\Scripts\hitCount.cs" />
-     <None Include="Assets\3DText Shader.shader" />
+     <None Include="Assets\Shaders\3DText Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="TouchScript">
- <HintPath>C:/Users/Ghost/Desktop/Shippy/Assets/TouchScript.dll</HintPath>
+ <HintPath>C:/Users/Ghost/Desktop/Shippy/Assets/Scripts/TouchScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

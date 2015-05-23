@@ -13,7 +13,7 @@ public class BulletScript : MonoBehaviour {
 		if (pos.y > 10) {
 			return;
 		}
-		pos.y = pos.y + 0.04f;
+		pos.y = pos.y + 0.05f;
 		transform.position = pos;
 	}
 }

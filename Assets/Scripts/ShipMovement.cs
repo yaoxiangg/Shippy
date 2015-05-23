@@ -30,8 +30,6 @@ public class ShipMovement : MonoBehaviour {
 	// Do Graphic & Input updates here
 	void Update() {
 		//base.Update();
-		updateShipLocation();
-
 		if(dead) {
 			deathCooldown -= Time.deltaTime;
 
@@ -69,6 +67,7 @@ public class ShipMovement : MonoBehaviour {
 	}
 	// Do physics engine updates here
 	void FixedUpdate () {
+		updateShipLocation();
 		if(dead)
 			return;
 	}
