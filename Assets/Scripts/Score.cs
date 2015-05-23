@@ -7,7 +7,6 @@ public class Score : MonoBehaviour {
 	static int score = 0;
 	static int highScore = 0;
 
-	static Score instance;
 	Text txtBox;
 
 	static public void AddPoint() {
@@ -33,7 +32,7 @@ public class Score : MonoBehaviour {
 	}
 
 	void OnDestroy() {
-		instance = null;
+		//instance = null;
 		PlayerPrefs.SetInt("highScore", highScore);
 	}
 

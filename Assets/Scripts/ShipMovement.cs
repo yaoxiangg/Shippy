@@ -3,43 +3,23 @@ using System.Collections;
 
 public class ShipMovement : MonoBehaviour {
 
-	private Transform shipTrans;
-	private GameObject playerShip;
-	private double leftX = -1.632;
-	private double rightX = 1.632;
-	public GameObject bullet;
-	public float bulletSpeed = 100;
 	public static bool shipInitialised = false;
 
-	Animator animator;
-	public bool godMode = false;
-	public bool dead = false;
-	float deathCooldown;
+	private GameObject playerShip;
+	private double leftX = -1.5;
+	private double rightX = 1.5;
+	private GameObject bullet;
 
 	// Use this for initialization
 	void Start () {
-		animator = transform.GetComponentInChildren<Animator>();
 		bullet = GameObject.FindGameObjectWithTag("Bullet");
 		playerShip = GameObject.FindGameObjectWithTag("Player");
-		shipTrans = this.transform;
 		InvokeRepeating("spawnBullet", 2f, 0.1f);
-		if(animator == null) {
-			Debug.LogError("Didn't find animator!");
-		}
+		InvokeRepeating("spawnEnemyShip", 2f, 3f);
 	}
 
 	// Do Graphic & Input updates here
 	void Update() {
-		//base.Update();
-		if(dead) {
-			deathCooldown -= Time.deltaTime;
-
-			if(deathCooldown <= 0) {
-				if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
-					Application.LoadLevel( Application.loadedLevel );
-				}
-			}
-		}
 	}
 
 	void updateShipLocation() {
@@ -58,7 +38,7 @@ public class ShipMovement : MonoBehaviour {
 	}
 	// Do physics engine updates here
 	void FixedUpdate () {
-		if(dead)
+		if(playerShip.GetComponent<Ship>().isDead())
 			return;
 		if (!shipInitialised) {
 			moveShipToStartPoint(playerShip);
@@ -75,19 +55,19 @@ public class ShipMovement : MonoBehaviour {
 		playerShip.transform.position = shipPos;
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
-		if(godMode)
-			return;
-
-		animator.SetTrigger("Death");
-		dead = true;
-		deathCooldown = 0.5f;
-	}
-
 	void spawnBullet() {
 		Vector3 pos = playerShip.transform.position;
 		pos.y = pos.y + 0.3f;
 		GameObject bulletClone = (GameObject) Instantiate(bullet, pos, playerShip.transform.rotation);
 		Destroy (bulletClone, 2.5f);
+	}
+
+	void spawnEnemyShip() {
+		GameObject enemyShip = GameObject.FindGameObjectWithTag("Enemy");
+		Vector3 enemyShipPos = EnemyShip.generateRandomEnemyPos();
+		GameObject enemyShipClone = (GameObject) Instantiate(enemyShip, enemyShipPos, enemyShip.transform.rotation);
+		//Initialise Enemy Ship Details - Bullet Speed, Bullet Damage
+		enemyShipClone.GetComponent<EnemyShip> ().setBulletSpeed (Random.Range (0.01f, 0.02f));
+		enemyShipClone.GetComponent<EnemyShip> ().setBulletDamage (Random.Range (1, 6));
 	}
 }

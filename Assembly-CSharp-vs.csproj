@@ -49,10 +49,13 @@
      <Compile Include="Assets\Scripts\BGLooper.cs" />
      <Compile Include="Assets\Scripts\BGMovement.cs" />
      <Compile Include="Assets\Scripts\BulletScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyBulletScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyShip.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\PlanetMovement.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\ScorePoint.cs" />
+     <Compile Include="Assets\Scripts\Ship.cs" />
      <Compile Include="Assets\Scripts\ShipMovement.cs" />
      <Compile Include="Assets\Scripts\StartScreenScript.cs" />
      <Compile Include="Assets\Scripts\btnClick.cs" />
