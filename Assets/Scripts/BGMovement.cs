@@ -4,10 +4,13 @@ using System.Collections;
 public class BGMovement : MonoBehaviour {
 	
 	public float Speed = 0.2f;
-
+	private float initialisedTime = 0;
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > 1)
-		this.GetComponent<Renderer>().material.mainTextureOffset = new Vector2 (0f, (Time.time - 1 )* Speed);
+		if (ShipMovement.shipInitialised) {
+			this.GetComponent<Renderer> ().material.mainTextureOffset = new Vector2 (0f, (Time.time - initialisedTime) * Speed);
+		} else {
+			initialisedTime = Time.time;
+		}
 	}
 }
