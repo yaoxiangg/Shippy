@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BGMovement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ShipMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\BGMovement.cs" Line="11" Column="92" />
+      <File FileName="Assets\Scripts\BGMovement.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\PlanetMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StartScreenScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ShipMovement.cs" Line="13" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
