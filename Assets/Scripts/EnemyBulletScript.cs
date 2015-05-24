@@ -28,4 +28,11 @@ public class EnemyBulletScript : MonoBehaviour {
 	public int getBulletDamage() {
 		return this.bulletDamage;	
 	}
+
+	void OnTriggerEnter2D(Collider2D otherObject) {
+		//Destroy bullet on contact
+		if (otherObject.tag.Equals ("Player")) {
+			Destroy (gameObject);
+		}
+	}
 }

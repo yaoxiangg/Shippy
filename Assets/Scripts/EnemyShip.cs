@@ -3,12 +3,15 @@ using System.Collections;
 
 public class EnemyShip : MonoBehaviour {
 
+	//EnemyShip Attributes
+	private Vector3 enemyShipPos; 	//Position
+	private int healthPoints;		//Health Points
+	private float shipBulletSpeed;	//Bullet Speed
+	private int shipBulletDamage;	//Bullet Damage
+	private bool alive;				//Ship Alive?
+
 	private GameObject enemyShip;
 	private GameObject bullet;
-	private Vector3 enemyShipPos;
-	private int healthPoints;
-	private float shipBulletSpeed;
-	private int shipBulletDamage;
 	private Animator animator;
 
 
@@ -16,9 +19,10 @@ public class EnemyShip : MonoBehaviour {
 	void Start () {
 		bullet = GameObject.FindGameObjectWithTag("EnemyBullet");
 		enemyShip = this.gameObject;
-		animator = transform.GetComponentInChildren<Animator>();
+		animator = enemyShip.GetComponent<Animator>();
+		alive = true;
 		if(animator == null) {
-			//Debug.LogError("Didn't find animator for Enemy!");
+			Debug.LogError("Didn't find animator for Enemy!");
 		}
 		if (enemyShipPos.x < 1.27f)
 			InvokeRepeating("spawnEnemyBullet", 0f, Random.Range (2.5f, 3f));
@@ -27,6 +31,8 @@ public class EnemyShip : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//MoveShip to location
+		if (!alive)
+			return;
 		Vector3 pos = enemyShip.transform.position;
 		if (pos.y < 0.5) {
 			return;
@@ -50,27 +56,39 @@ public class EnemyShip : MonoBehaviour {
 		Destroy (enemyBulletClone, 5.5f);
 	}
 
+	//Bullet hit
+	void OnTriggerEnter2D(Collider2D otherObject) {
+		if (otherObject.tag.Equals ("Bullet")) {
+			if (healthPoints <= 0) {
+				alive = false;
+				animator.SetTrigger ("EnemyShipDeath"); 
+				Destroy (gameObject.GetComponent<CircleCollider2D>(), 0f);
+				Destroy (gameObject, 1f);
+				//Destroy object
+			} else {
+				//Deduct health
+				healthPoints -= otherObject.GetComponent<BulletScript>().getBulletDamage();
+				//Debug.Log ("HIT ENEMY SHIP! - HP: " + healthPoints);
+			}
+		}
+	}
+
+	public int getHealthPoints {
+		get {
+			return healthPoints;
+		}
+	}
+
+	public void setHealthPoints(int hp) {
+		healthPoints = hp;
+	}
+
 	public void setBulletSpeed(float val) {
 		this.shipBulletSpeed = val;	
 	}
-
+	
 	public void setBulletDamage(float val) {
 		this.shipBulletDamage = (int) val;	
 	}
 
-	//Bullet hit
-	void OnTriggerEnter2D(Collider2D otherObject) {
-		if (otherObject.tag.Equals ("Bullet")) {
-			if (healthPoints < 0) {
-				animator.SetTrigger ("Death"); 
-				//Destroy object
-			} else {
-				//Deduct health
-				if (otherObject.tag.Equals ("EnemyBullet")) {
-					healthPoints -= otherObject.GetComponent<EnemyBulletScript>().getBulletDamage();
-					//Debug.Log ("HIT MY SHIP! - HP: " + healthPoints);
-				}
-			}
-		}
-	}
 }
