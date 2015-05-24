@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Ship : MonoBehaviour {
 	
-	private int healthPoints = 100;
+	private int healthPoints = 10;
 	private Animator animator;
 	private GameObject playerShip;
 	private GameObject bullet;
@@ -21,7 +21,7 @@ public class Ship : MonoBehaviour {
 			Debug.LogError("Didn't find player animator!");
 		}
 		
-		InvokeRepeating("spawnBullet", 2f, 0.1f);
+		InvokeRepeating("spawnBullet", 2f, 0.3f);
 	}
 	
 	// Update is called once per frame
@@ -30,9 +30,9 @@ public class Ship : MonoBehaviour {
 			deathCooldown -= Time.deltaTime;
 			if(deathCooldown <= 0) {
 				if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
+					ShipMovement.shipInitialised = false;
 					Application.LoadLevel(1);
 					//Reset globals
-					ShipMovement.shipInitialised = false;
 				}
 			}
 		}
@@ -41,17 +41,17 @@ public class Ship : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D otherObject) {
 		if(godMode)
 			return;
+		if (otherObject.tag.Equals ("EnemyBullet")) {
+			//Debug.Log ("HIT MY SHIP! - HP: " + healthPoints);
+			healthPoints -= otherObject.GetComponent<EnemyBulletScript>().getBulletDamage();
+		}
 		if (healthPoints <= 0) {
 			dead = true;
-			//animator.SetTrigger ("ShipDeath"); 
+			CancelInvoke("spawnBullet");
+			animator.SetTrigger ("ShipDeath"); 
 			Destroy (gameObject.GetComponent<CircleCollider2D>(), 0f);
-			Destroy (gameObject, 1f);
+			//Destroy (gameObject, 1f);
 			deathCooldown = 2f;
-		} else {
-			if (otherObject.tag.Equals ("EnemyBullet")) {
-				//Debug.Log ("HIT MY SHIP! - HP: " + healthPoints);
-				healthPoints -= otherObject.GetComponent<EnemyBulletScript>().getBulletDamage();
-			}
 		}
 	}
 

@@ -59,15 +59,13 @@ public class EnemyShip : MonoBehaviour {
 	//Bullet hit
 	void OnTriggerEnter2D(Collider2D otherObject) {
 		if (otherObject.tag.Equals ("Bullet")) {
+			healthPoints -= otherObject.GetComponent<BulletScript>().getBulletDamage();
 			if (healthPoints <= 0) {
 				alive = false;
 				animator.SetTrigger ("EnemyShipDeath"); 
 				Destroy (gameObject.GetComponent<CircleCollider2D>(), 0f);
 				Destroy (gameObject, 1f);
 				//Destroy object
-			} else {
-				//Debug.Log ("HIT ENEMY SHIP! - HP: " + healthPoints);
-				healthPoints -= otherObject.GetComponent<BulletScript>().getBulletDamage();
 			}
 		}
 	}
