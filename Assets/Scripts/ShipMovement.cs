@@ -57,6 +57,7 @@ public class ShipMovement : MonoBehaviour {
 		Vector3 enemyShipPos = EnemyShip.generateRandomEnemyPos();
 		GameObject enemyShipClone = (GameObject) Instantiate(enemyShip, enemyShipPos, enemyShip.transform.rotation);
 		//Initialise Enemy Ship Details - Bullet Speed, Bullet Damage, HP
+		enemyShipClone.tag = "Untagged";
 		enemyShipClone.GetComponent<EnemyShip> ().setBulletSpeed (Random.Range (0.01f, 0.02f));
 		enemyShipClone.GetComponent<EnemyShip> ().setBulletDamage (Random.Range (1, 6));
 		enemyShipClone.GetComponent<EnemyShip> ().setHealthPoints (3);

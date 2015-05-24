@@ -26,13 +26,15 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(dead) {
-			deathCooldown -= Time.deltaTime;
-			if(deathCooldown <= 0) {
-				if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
-					ShipMovement.shipInitialised = false;
-					Application.LoadLevel(1);
-					//Reset globals
+		if (StartScreenScript.started) {
+			if(dead) {
+				deathCooldown -= Time.deltaTime;
+				if(deathCooldown <= 0) {
+					if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
+						ShipMovement.shipInitialised = false;
+						Application.LoadLevel(1);
+						//Reset globals
+					}
 				}
 			}
 		}
@@ -41,7 +43,7 @@ public class Ship : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D otherObject) {
 		if(godMode)
 			return;
-		if (otherObject.tag.Equals ("EnemyBullet")) {
+		if (otherObject.tag.Equals ("EnemyBulletClone")) {
 			//Debug.Log ("HIT MY SHIP! - HP: " + healthPoints);
 			healthPoints -= otherObject.GetComponent<EnemyBulletScript>().getBulletDamage();
 		}
@@ -63,6 +65,7 @@ public class Ship : MonoBehaviour {
 		Vector3 pos = playerShip.transform.position;
 		pos.y = pos.y + 0.3f;
 		GameObject bulletClone = (GameObject) Instantiate(bullet, pos, playerShip.transform.rotation);
+		bulletClone.tag = "PlayerBulletClone";
 		bulletClone.GetComponent<BulletScript> ().setBulletDamage(1);
 		Destroy (bulletClone, 2.5f);
 	}

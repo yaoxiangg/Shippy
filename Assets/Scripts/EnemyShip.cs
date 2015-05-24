@@ -24,21 +24,23 @@ public class EnemyShip : MonoBehaviour {
 		if(animator == null) {
 			Debug.LogError("Didn't find animator for Enemy!");
 		}
-		if (enemyShipPos.x < 1.27f)
+		if (enemyShipPos.x < 1.27f && enemyShip.tag.Equals ("Untagged"))
 			InvokeRepeating("spawnEnemyBullet", 0f, Random.Range (2.5f, 3f));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//MoveShip to location
-		if (!alive)
-			return;
-		Vector3 pos = enemyShip.transform.position;
-		if (pos.y < 0.5) {
-			return;
+		if (StartScreenScript.started) {
+			if (!alive)
+				return;
+			Vector3 pos = enemyShip.transform.position;
+			if (pos.y < 0.5) {
+				return;
+			}
+			pos.y -= 0.005f;
+			enemyShip.transform.position = pos;
 		}
-		pos.y -= 0.005f;
-		enemyShip.transform.position = pos;
 	}
 
 	public static Vector3 generateRandomEnemyPos() {
@@ -51,6 +53,7 @@ public class EnemyShip : MonoBehaviour {
 		pos.y = pos.y - 0.2f;
 		GameObject enemyBulletClone = (GameObject) Instantiate(bullet, pos, enemyShip.transform.rotation);
 		//Set Bullet Parameters
+		enemyBulletClone.tag = "EnemyBulletClone";
 		enemyBulletClone.GetComponent<EnemyBulletScript>().setSpeed (shipBulletSpeed);
 		enemyBulletClone.GetComponent<EnemyBulletScript>().setBulletDamage (shipBulletDamage);
 		Destroy (enemyBulletClone, 5.5f);
@@ -58,7 +61,7 @@ public class EnemyShip : MonoBehaviour {
 
 	//Bullet hit
 	void OnTriggerEnter2D(Collider2D otherObject) {
-		if (otherObject.tag.Equals ("Bullet")) {
+		if (otherObject.tag.Equals ("PlayerBulletClone")) {
 			healthPoints -= otherObject.GetComponent<BulletScript>().getBulletDamage();
 			if (healthPoints <= 0) {
 				alive = false;

@@ -9,7 +9,9 @@ public class StartScreenScript : MonoBehaviour {
 	private int drawDepth = -1000;		// the texture's order in the draw hierarchy: a low number means it renders on top
 	private float alpha = 1.0f;			// the texture's alpha value between 0 and 1
 	private int fadeDir = -1;			// the direction to fade: in = -1 or out = 1
-	bool started = false;
+	public static bool started = false;
+	GameObject tapScreen;
+	private int touchCounter = 0;
 
 	void OnGUI()
 	{
@@ -26,14 +28,14 @@ public class StartScreenScript : MonoBehaviour {
 		if (!started) {
 			if (alpha > 0.01) {
 				Event.current.clickCount = 0;
+				touchCounter = Input.touchCount;
 			} else {
 				Time.timeScale = 0;
 			}
-			if (Input.touchCount > 0 || Event.current.clickCount > 0) {
+			if (Input.touchCount > touchCounter || Event.current.clickCount > 0) {
 				Time.timeScale = 1;
 				//HIDE TAP-TO-START SCREEN
-				GameObject tapScreen = GameObject.FindGameObjectWithTag("TapToStart");
-				Destroy (tapScreen);
+				tapScreen.SetActive(false);
 				started = true;
 			}
 		}
@@ -53,11 +55,30 @@ public class StartScreenScript : MonoBehaviour {
 		BeginFade(-1);		// call the fade in function
 	}// Use this for initialization
 
+	void OnApplicationFocus()
+	{
+		showPauseScreen ();
+	}
+
+	void showPauseScreen() {
+		if (started) {
+			tapScreen.SetActive(true);
+			started = false;
+		}
+	}
+	// Use this for initialization
 	void Start () {
+		tapScreen = GameObject.FindGameObjectWithTag("TapToStart");
+		started = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)){
+			if (!started)
+				Application.Quit();
+			showPauseScreen ();
+		}
 	}
 
 	void startNewGame() {

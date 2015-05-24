@@ -9,12 +9,14 @@ public class EnemyBulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Update enemy bullet position (Should it be tracer bullet?)
-		Vector3 pos = transform.position;
-		if (pos.y < -5) {
-			return;
+		if (StartScreenScript.started) {
+			Vector3 pos = transform.position;
+			if (pos.y < -5) {
+				return;
+			}
+			pos.y = pos.y - bulletMoveSpeed;
+			transform.position = pos;
 		}
-		pos.y = pos.y - bulletMoveSpeed;
-		transform.position = pos;
 	}
 
 	public void setSpeed(float val) {

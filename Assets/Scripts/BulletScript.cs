@@ -8,12 +8,14 @@ public class BulletScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 pos = transform.position;
-		if (pos.y > 10) {
-			return;
+		if (StartScreenScript.started) {
+			Vector3 pos = transform.position;
+			if (pos.y > 10) {
+				return;
+			}
+			pos.y = pos.y + 0.05f;
+			transform.position = pos;
 		}
-		pos.y = pos.y + 0.05f;
-		transform.position = pos;
 	}
 
 	public void setSpeed(float val) {
