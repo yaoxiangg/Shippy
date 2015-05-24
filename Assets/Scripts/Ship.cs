@@ -32,6 +32,7 @@ public class Ship : MonoBehaviour {
 				if(deathCooldown <= 0) {
 					if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
 						ShipMovement.shipInitialised = false;
+						TapBreaker.cubeSelected = 0;
 						Application.LoadLevel(1);
 						//Reset globals
 					}

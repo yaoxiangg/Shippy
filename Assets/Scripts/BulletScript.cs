@@ -32,7 +32,7 @@ public class BulletScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherObject) {
 		//Destroy bullet on contact
-		if (otherObject.tag.Equals ("Enemy")) {
+		if (otherObject.tag.Equals ("Untagged")) {
 			Destroy (gameObject);
 		}
 	}
