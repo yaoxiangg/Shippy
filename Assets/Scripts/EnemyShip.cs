@@ -66,9 +66,8 @@ public class EnemyShip : MonoBehaviour {
 				Destroy (gameObject, 1f);
 				//Destroy object
 			} else {
-				//Deduct health
-				healthPoints -= otherObject.GetComponent<BulletScript>().getBulletDamage();
 				//Debug.Log ("HIT ENEMY SHIP! - HP: " + healthPoints);
+				healthPoints -= otherObject.GetComponent<BulletScript>().getBulletDamage();
 			}
 		}
 	}

@@ -20,6 +20,6 @@ public class hitCount : MonoBehaviour {
 	}
 
 	void Update () {
-		txtBox.text = "Hit Count: " + hit;
+		txtBox.text = "Hit Count: " + hit + "\nHP: " + GameObject.FindGameObjectWithTag ("Player").GetComponent<Ship>().getHealthPoints();
 	}
 }

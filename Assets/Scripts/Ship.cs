@@ -16,9 +16,9 @@ public class Ship : MonoBehaviour {
 	void Start () {
 		bullet = GameObject.FindGameObjectWithTag("Bullet");
 		playerShip = GameObject.FindGameObjectWithTag("Player");
-		animator = transform.GetComponentInChildren<Animator>();
+		animator = playerShip.GetComponent<Animator>();
 		if(animator == null) {
-			Debug.LogError("Didn't find animator!");
+			Debug.LogError("Didn't find player animator!");
 		}
 		
 		InvokeRepeating("spawnBullet", 2f, 0.1f);
@@ -30,7 +30,9 @@ public class Ship : MonoBehaviour {
 			deathCooldown -= Time.deltaTime;
 			if(deathCooldown <= 0) {
 				if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
-					Application.LoadLevel( Application.loadedLevel );
+					Application.LoadLevel(1);
+					//Reset globals
+					ShipMovement.shipInitialised = false;
 				}
 			}
 		}
@@ -40,14 +42,15 @@ public class Ship : MonoBehaviour {
 		if(godMode)
 			return;
 		if (healthPoints <= 0) {
-			animator.SetTrigger ("Death");
 			dead = true;
-			deathCooldown = 0.5f;
+			//animator.SetTrigger ("ShipDeath"); 
+			Destroy (gameObject.GetComponent<CircleCollider2D>(), 0f);
+			Destroy (gameObject, 1f);
+			deathCooldown = 2f;
 		} else {
-			//Deduct health
 			if (otherObject.tag.Equals ("EnemyBullet")) {
-				healthPoints -= otherObject.GetComponent<EnemyBulletScript>().getBulletDamage();
 				//Debug.Log ("HIT MY SHIP! - HP: " + healthPoints);
+				healthPoints -= otherObject.GetComponent<EnemyBulletScript>().getBulletDamage();
 			}
 		}
 	}
@@ -62,5 +65,9 @@ public class Ship : MonoBehaviour {
 		GameObject bulletClone = (GameObject) Instantiate(bullet, pos, playerShip.transform.rotation);
 		bulletClone.GetComponent<BulletScript> ().setBulletDamage(1);
 		Destroy (bulletClone, 2.5f);
+	}
+
+	public int getHealthPoints(){
+		return healthPoints;
 	}
 }
