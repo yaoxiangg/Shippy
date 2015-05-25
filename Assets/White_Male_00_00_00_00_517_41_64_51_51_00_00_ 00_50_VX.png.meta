@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: ebce998b96a5a79439065c53baf4a396
-timeCreated: 1432437897
+guid: 156c65e775e50774f9ee0ace1d24a1ee
+timeCreated: 1432565660
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_0
-    21300002: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_1
-    21300004: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_2
-    21300006: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_3
-    21300008: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_4
-    21300010: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_5
-    21300012: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_6
-    21300014: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_7
-    21300016: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_8
-    21300018: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_9
-    21300020: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_10
-    21300022: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_11
+    21300000: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_0
+    21300002: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_1
+    21300004: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_2
+    21300006: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_3
+    21300008: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_4
+    21300010: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_5
+    21300012: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_6
+    21300014: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_7
+    21300016: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_8
+    21300018: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_9
+    21300020: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_10
+    21300022: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +38,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -2
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -61,7 +61,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_0
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_0
       rect:
         serializedVersion: 2
         x: 0
@@ -69,9 +69,9 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_1
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_1
       rect:
         serializedVersion: 2
         x: 32
@@ -79,79 +79,9 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_9
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_11
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_2
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_2
       rect:
         serializedVersion: 2
         x: 64
@@ -159,9 +89,49 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_10
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_7
       rect:
         serializedVersion: 2
         x: 32
@@ -169,9 +139,39 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: White_Male_00_416_00_00_45_41_64_41_51_00_00_ 00_50_VX_8
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White_Male_00_00_00_00_517_41_64_51_51_00_00_ 00_50_VX_11
       rect:
         serializedVersion: 2
         x: 64
@@ -179,7 +179,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

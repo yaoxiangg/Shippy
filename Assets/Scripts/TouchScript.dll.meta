@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: 985630b56c7832d4a8259ff3e1df6a0a
-timeCreated: 1432187019
+timeCreated: 1432524963
 licenseType: Pro
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
-  executionOrder: {}
+  executionOrder:
+    TouchScript.InputSources.MobileInput: 300
+    TouchScript.InputSources.MouseInput: 400
+    TouchScript.Layers.CameraLayer: 100
+    TouchScript.TouchManager: 200
   isPreloaded: 0
   platformData:
     Any:

@@ -15,10 +15,11 @@ public class LeftScreenScript : MonoBehaviour {
 
 	//Create a cube at the top
 	private void spawnNewCube(int row, int col) {
-		GameObject cube = (GameObject) Instantiate(Resources.Load("Cube")); 
 		int val = Random.Range (0, 8);
-		cube.GetComponent<Renderer>().material.color = TapBreaker.cubeColorType[val];
-		float x = (float)((col * 2.5) + 1 - 17);
+		GameObject cube = (GameObject) Instantiate(Resources.Load("Rune")); 
+		SpriteRenderer sr = cube.GetComponent<SpriteRenderer>(); 
+		sr.sprite = StartScreenScript.runeSprite[val];
+		float x = (float)((col * 2.5) + 1 - 17.1);
 		float y = (float)((row * 2.5) + 0.3 + 0.922);
 		float z = (float)(15 + 6.2);
 		Vector3 position = new Vector3(x, y, z);

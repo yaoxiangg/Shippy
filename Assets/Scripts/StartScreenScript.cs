@@ -9,9 +9,10 @@ public class StartScreenScript : MonoBehaviour {
 	private int drawDepth = -1000;		// the texture's order in the draw hierarchy: a low number means it renders on top
 	private float alpha = 1.0f;			// the texture's alpha value between 0 and 1
 	private int fadeDir = -1;			// the direction to fade: in = -1 or out = 1
-	public static bool started = false;
 	GameObject tapScreen;
 	private int touchCounter = 0;
+	public static Sprite[] runeSprite = new Sprite[8];
+	public static bool started = false;
 
 	void OnGUI()
 	{
@@ -35,7 +36,8 @@ public class StartScreenScript : MonoBehaviour {
 			if (Input.touchCount > touchCounter || Event.current.clickCount > 0) {
 				Time.timeScale = 1;
 				//HIDE TAP-TO-START SCREEN
-				tapScreen.SetActive(false);
+				if (Application.loadedLevel == 1)
+					tapScreen.SetActive(false);
 				started = true;
 			}
 		}
@@ -57,27 +59,40 @@ public class StartScreenScript : MonoBehaviour {
 
 	void OnApplicationFocus()
 	{
-		showPauseScreen ();
-	}
-
-	void showPauseScreen() {
 		if (started) {
 			tapScreen.SetActive(true);
 			started = false;
+		} 
+	}
+
+	void togglePauseScreen() {
+		if (started) {
+			tapScreen.SetActive(true);
+			started = false;
+		} else {
+			Time.timeScale = 1;
+			//HIDE TAP-TO-START SCREEN
+			started = true;
+			if (Application.loadedLevel == 1)
+				tapScreen.SetActive(false);
 		}
 	}
 	// Use this for initialization
 	void Start () {
 		tapScreen = GameObject.FindGameObjectWithTag("TapToStart");
 		started = false;
+		
+		if (Application.loadedLevel == 1) {
+			for (int i = 0; i < 8; i++) {
+				runeSprite[i] = (GameObject.FindGameObjectWithTag ("RuneType"+i).GetComponent<SpriteRenderer> ().sprite);
+			}
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)){
-			if (!started)
-				Application.Quit();
-			showPauseScreen ();
+			togglePauseScreen ();
 		}
 	}
 
